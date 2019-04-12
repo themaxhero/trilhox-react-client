@@ -9,6 +9,9 @@ function App({ testarRedux }: any){
   return (
     <div className="App">
         <header className="App-header">
+          <div className="navbar navbar-light bg-light">
+            <div className="navbar-brand mb-0 h1">Navbar</div>
+          </div>
           <img src={logo} className="App-logo" alt="logo" />
           <p>
             Edit <code>src/App.tsx</code> and save to reload.

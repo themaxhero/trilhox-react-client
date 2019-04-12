@@ -1,6 +1,8 @@
 {
-  "name": "client",
+  "name": "trilho-react-client",
   "version": "0.1.0",
+  "author": "Marcelo Amancio de Lima Santos",
+  "license": "MIT",
   "private": true,
   "dependencies": {
     "@types/graphql": "^14.2.0",
@@ -9,6 +11,7 @@
     "@types/react": "16.8.13",
     "@types/react-dom": "16.8.4",
     "@types/react-redux": "^7.0.6",
+    "@types/redux-logger": "^3.0.7",
     "@types/ws": "^6.0.1",
     "apollo-boost": "^0.3.1",
     "apollo-link-ws": "^1.0.17",
@@ -20,6 +23,7 @@
     "react-redux": "^7.0.1",
     "react-scripts": "2.1.8",
     "redux": "^4.0.1",
+    "redux-logger": "^3.0.6",
     "redux-loop": "^4.5.4",
     "subscriptions-transport-ws": "^0.9.16",
     "typescript": "3.4.3"

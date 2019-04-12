@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Dispatch } from "redux";
+import logo from "./logo.svg";
+import "./App.css";
+import { state }from "./initialState"
+import { connect } from "react-redux";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
+function App({ testarRedux }: any){
+  return (
+    <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
             Edit <code>src/App.tsx</code> and save to reload.
           </p>
+          <button onClick={testarRedux}>Test</button>
           <a
             className="App-link"
             href="https://reactjs.org"
@@ -21,8 +24,17 @@ class App extends Component {
           </a>
         </header>
       </div>
-    );
+  )
+}
+
+function mapToStateProps(state: state) {
+  return state.a;
+}
+
+function mapDispatchToProps(dispatch: Dispatch){
+  return {
+    testarRedux: () => dispatch({type: "TEST"}),
   }
 }
 
-export default App;
+export default connect(mapToStateProps, mapDispatchToProps)(App);

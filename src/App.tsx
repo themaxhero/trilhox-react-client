@@ -1,29 +1,19 @@
 import React from "react";
-import { uuid } from "./types/generic";
 import Navbar from "./components/Navbar";
-import Container from 'react-bootstrap/Container';
-import Home from "./components/Home";
+import PageRouter from "./components/PageRouter";
 import { Dispatch } from "redux";
 import "./App.css";
 import { state }from "./initialState"
 import { connect } from "react-redux";
 
-function App({ user, kanbans, openKanban, newKanban, enterDeleteMode }: any){
+function App({ page, user, kanbans}: any){
   return (
     <div className="App">
-      <Navbar 
-        user={user} 
-        newKanban={newKanban} 
-        enterDeleteMode={enterDeleteMode}
-      />
-      <Container className="App-contents">
-        <Home
-          user={user}
-          kanbans={kanbans}
-          openKanban={openKanban}
-        />
-      </Container>
+      <Navbar user={user}/>
+      <div className="App-contents">
+        <PageRouter/>
       </div>
+    </div>
   )
 }
 
@@ -35,8 +25,6 @@ function mapToStateProps(state: state) {
 
 function mapDispatchToProps(dispatch: Dispatch){
   return {
-    openKanban: (id: uuid) => dispatch({ type: "OPEN_KANBAN", payload: id }),
-    newKanban: () => dispatch({ type: "CREATE_KANBAN" }),
     enterDeleteMode: () => dispatch({ type: "ENTER_DELETE_KANBAN_MODE" }),
   }
 }

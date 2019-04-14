@@ -1,0 +1,96 @@
+.Blackground{
+    background-color: black;
+    opacity: 80%;
+    z-index: 500;
+}
+
+.CardEditor-container{
+    display: flex;
+    flex-direction: row;
+    background-color: lightgrey;
+    z-index: 501;
+}
+
+.CardEditor-left-panel{
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.CardEditor-card-title{
+    margin-left: 8px;
+    margin-top: 8px;
+}
+
+.CardEditor-description{
+    margin: 8px;
+    padding: 8px;
+    width: 100%;
+    height: 512px;
+    cursor: pointer;
+}
+
+.CardEditor-task-list{
+    margin: 8px;
+    padding: 8px;
+    width: 512px;
+    height: auto;
+}
+
+.CardEditor-task{
+    margin-top: 8px;
+    margin-left: 8px;
+    border-radius: 8px;
+    width: auto;
+    background-color: grey;
+}
+
+.CardEditor-task:hover{
+    background-color: darkgrey;
+    cursor: pointer;
+}
+
+.Comment{
+    width: 542px;
+    height: auto;
+    max-height: 115px;
+}
+
+.Comment-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.Comment-avatar{
+    width: 64px;
+    height: 100%;
+}
+
+.Comment-contents{
+    width: auto;
+    height: 100%;
+}
+
+.Comment-save{
+    width: 64;
+    height: 100%;
+}
+
+.CardEditor-right-panel{
+    display: flex;
+    flex-direction: column;
+}
+
+.CardEditor-add-to-card{
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.CardEditor.actions{
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+}

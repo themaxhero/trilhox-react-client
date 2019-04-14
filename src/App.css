@@ -23,6 +23,23 @@
   color: #61dafb;
 }
 
+.App-contents{
+  margin-top: 8px;
+}
+
+.App-kanbans{
+  display: flex;
+  flex-direction: row;
+}
+
+.Navbar-avatar{
+  cursor: pointer;
+}
+
+.Navbar-rBtn{
+  margin-left: 8px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

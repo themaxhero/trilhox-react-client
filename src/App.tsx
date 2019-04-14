@@ -1,42 +1,43 @@
-import React, { Component } from 'react';
+import React from "react";
+import { uuid } from "./types/generic";
+import Navbar from "./components/Navbar";
+import Container from 'react-bootstrap/Container';
+import Home from "./components/Home";
 import { Dispatch } from "redux";
-import logo from "./logo.svg";
 import "./App.css";
 import { state }from "./initialState"
 import { connect } from "react-redux";
 
-function App({ testarRedux }: any){
+function App({ user, kanbans, openKanban, newKanban, enterDeleteMode }: any){
   return (
     <div className="App">
-        <header className="App-header">
-          <div className="navbar navbar-light bg-light">
-            <div className="navbar-brand mb-0 h1">Navbar</div>
-          </div>
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.tsx</code> and save to reload.
-          </p>
-          <button onClick={testarRedux}>Test</button>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <Navbar 
+        user={user} 
+        newKanban={newKanban} 
+        enterDeleteMode={enterDeleteMode}
+      />
+      <Container className="App-contents">
+        <Home
+          user={user}
+          kanbans={kanbans}
+          openKanban={openKanban}
+        />
+      </Container>
       </div>
   )
 }
 
 function mapToStateProps(state: state) {
-  return state.a;
-}
+  return { user: state.user,
+           kanbans: state.kanbans
+         }
+};
 
 function mapDispatchToProps(dispatch: Dispatch){
   return {
-    testarRedux: () => dispatch({type: "TEST"}),
+    openKanban: (id: uuid) => dispatch({ type: "OPEN_KANBAN", payload: id }),
+    newKanban: () => dispatch({ type: "CREATE_KANBAN" }),
+    enterDeleteMode: () => dispatch({ type: "ENTER_DELETE_KANBAN_MODE" }),
   }
 }
 

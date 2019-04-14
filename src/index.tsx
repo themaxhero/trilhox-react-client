@@ -23,8 +23,6 @@ const client = new ApolloClient({
 
 const enhancer = compose( applyMiddleware(logger), install());
 
-
-
 const store = createStore(reducers as Reducer,
                           initialState as DeepPartial<state>,
                           enhancer);
@@ -33,7 +31,8 @@ render((<ApolloProvider client={client}>
             <Provider store={store}>
                 <App />
             </Provider>
-        </ApolloProvider>), document.getElementById("root"));
+        </ApolloProvider>
+), document.getElementById("root"));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

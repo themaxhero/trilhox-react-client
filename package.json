@@ -33,7 +33,10 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "rules":{
+      "no-empty-pattern": "off",
+      "@typescript-eslint/no-empty-pattern": "off"
+    }
   },
   "browserslist": {
     "production": [

@@ -11,3 +11,9 @@ interface IUser {
 }
 
 export type user = IUser;
+
+export function rename(user: user, name: name): user {
+    return { ...user, name };
+}
+
+export default { rename };

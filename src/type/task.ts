@@ -26,4 +26,12 @@ export function toggle(task: task): task {
     return { ...task, active: !task.active };
 }
 
-export default { rename, toggle };
+export function getName(task: task){
+    return task.name;
+}
+
+export function getValue(task: task){
+    return task.active;
+}
+
+export default { rename, toggle, getName, getValue };

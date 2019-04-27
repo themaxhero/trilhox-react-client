@@ -1,6 +1,7 @@
 import { uuid, name, url } from "./generic";
 import { user } from './user';
 import { Guid } from 'guid-typescript';
+import { bookDraft } from './book';
 
 interface IKanban {
     id: uuid;
@@ -61,11 +62,24 @@ export function removeMember(kanban: kanban, memberId: uuid): kanban {
     return { ...kanban, labels: newMembers };
 }
 
+export function getName(kanban: kanban): name {
+    return kanban.name;
+}
+
+export function getBooks(kanban: kanban): uuid[] {
+    return kanban.books;
+}
+
+export function createBookDraft(kanban: kanban): bookDraft {
+    return { kanban: kanban.id, name: "Untitled Book" };
+}
+
 export function createKanbanDraft(user: user){
     const localId = Guid.create().toString();
-    return { localId,
-             name: "Untitled Kanban",
-             author: user.id
+    return { 
+        localId,
+        name: "Untitled Kanban",
+        author: user.id,
     };
 }
 
@@ -78,5 +92,8 @@ export default {
     removeLabel,
     addMember,
     removeMember,
+    getName,
+    getBooks,
+    createBookDraft,
     createKanbanDraft,
 }

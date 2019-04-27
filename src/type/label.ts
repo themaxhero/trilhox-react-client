@@ -26,10 +26,18 @@ export function rename(label: label, name: name): label {
     return { ...label, name };
 }
 
+export function getColor(label: label){
+    return label.color;
+}
+
+export function getName(label: label){
+    return label.name;
+}
+
 export function createLabelDraft(kanban: kanban,
                                  name: name,
                                  color: string): labelDraft {
     return { kanban: kanban.id, name, color };
 }
 
-export default { changeColor, rename, createLabelDraft }
+export default { changeColor, rename, getColor, getName, createLabelDraft }

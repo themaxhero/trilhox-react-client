@@ -6,23 +6,31 @@ import "./index.css"
 import { Dispatch } from "redux";
 import { state } from "../../type/state";
 import { connect } from "react-redux";
-import { changeLogin, changePassword, submitLogin } from "../../action/landing";
+import { changeUsername,
+         changePassword,
+         changeEmail,
+         submitRegister, 
+} from "../../action/register";
 
 interface IProps {
-    login: string | undefined;
+    username: string | undefined;
     password: string | undefined;
+    email: string | undefined;
     error: string | undefined;
-    onChangeLogin: (e: any) => void;
+    onChangeUsername: (e: any) => void;
+    onChangeEmail: (e: any) => void;
     onChangePassword: (e: any) => void;
-    onSubmitLogin: (e: any) => void;
+    onSubmitRegister: (e: any) => void;
 }
 
-function Component({ login,
+function Component({ username,
                      password,
+                     email,
                      error,
-                     onChangeLogin,
+                     onChangeUsername,
+                     onChangeEmail,
                      onChangePassword,
-                     onSubmitLogin, 
+                     onSubmitRegister, 
                    }: IProps){
     return (
         <div>
@@ -33,17 +41,22 @@ function Component({ login,
                 </div>
                 <Form 
                     className="bg-light p1em landing-form rounded-bottom"
-                    onSubmit={ onSubmitLogin }>
+                    onSubmit={ onSubmitRegister }>
                     { error 
                         ? <div className="landing-error">{ error }</div> 
                         : <div/> 
                     }
                     <FormControl 
                         className="landing-input"
-                        onChange={ onChangeLogin }
-                        value={ login ? login : "" }
+                        onChange={ onChangeEmail }
+                        value={ email ? email : "" }
                         type="email"
                         placeholder="E-mail"/>
+                    <FormControl 
+                        className="landing-input"
+                        onChange={ onChangeUsername }
+                        value={ username ? username : "" }
+                        placeholder="username"/>
                     <FormControl 
                         className="landing-input"
                         onChange={ onChangePassword }
@@ -53,8 +66,8 @@ function Component({ login,
                     <div className="landing-btn-container">
                         <Button 
                             variant="primary"
-                            disabled={ !login || !password }
-                            onClick={ onSubmitLogin }>
+                            disabled={ !email || !username || !password }
+                            onClick={ onSubmitRegister }>
                             Submit
                         </Button>
                     </div>
@@ -66,23 +79,27 @@ function Component({ login,
 
 function mapStateToProps(state: state){
     return {
-        login: state.landing.login,
-        password: state.landing.password,
-        error: state.landing.error,
+        username: state.register.username,
+        email: state.register.email,
+        password: state.register.password,
+        error: state.register.error,
     };
 }
 
 function mapDispatchToProps(dispatch: Dispatch<any>){
     return {
-        onChangeLogin: (e: any) => {
-            dispatch(changeLogin(e.target.value));
+        onChangeUsername: (e: any) => {
+            dispatch(changeUsername(e.target.value));
+        },
+        onChangeEmail: (e: any) => {
+            dispatch(changeEmail(e.target.value));
         },
         onChangePassword: (e: any) => {
             dispatch(changePassword(e.target.value));
         },
-        onSubmitLogin: (e: any) => {
+        onSubmitRegister: (e: any) => {
             e.preventDefault();
-            dispatch(submitLogin());
+            dispatch(submitRegister());
         }
     };
 }

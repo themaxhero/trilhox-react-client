@@ -1,5 +1,5 @@
 import { loop, Cmd } from "redux-loop";
-import { state } from '../type/state';
+import { memberState as state } from '../type/state';
 import { action } from '../type/action';
 
 export function member(state: state, { type, payload }: action){

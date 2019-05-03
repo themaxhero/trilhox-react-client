@@ -12,6 +12,8 @@
     "@types/react-router-dom": "^4.3.2",
     "@types/redux-devtools-extension": "^2.13.2",
     "@types/redux-logger": "^3.0.7",
+    "apollo-link-context": "^1.0.17",
+    "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
     "connected-react-router": "^6.4.0",
     "fp-ts": "^1.17.1",
@@ -36,8 +38,7 @@
   },
   "eslintConfig": {
     "rules": {
-      "no-empty-pattern": "off",
-      "@typescript-eslint/no-empty-pattern": "off"
+      "no-empty-pattern": false
     }
   },
   "browserslist": {

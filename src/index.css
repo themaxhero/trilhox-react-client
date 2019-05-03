@@ -34,3 +34,11 @@ code {
 .p1emR{
   padding-right: 1em;
 }
+
+.black-bg {
+  position: fixed;
+  opacity: 0.8;
+  background-color: black;
+  width: 100%;
+  height: 100%;
+}

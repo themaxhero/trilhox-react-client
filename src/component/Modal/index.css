@@ -1,0 +1,8 @@
+.dialog-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    right: 50%;
+    width: 20%;
+    transform: translate(-55%, -70%);
+}

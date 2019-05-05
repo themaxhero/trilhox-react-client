@@ -6,7 +6,7 @@ import { BrowserRouter as _, Route, Switch } from "react-router-dom";
 import { ApolloProvider } from "react-apollo";
 import { ConnectedRouter } from "connected-react-router";
 import { History } from "history";
-import Navbar from "../App";
+import KanbanCreationForm from "../KanbanCreationForm";
 import KanbanList from '../KanbanList';
 import Landing from "../Landing";
 import Register from "../Register";
@@ -25,7 +25,8 @@ function Root({ store, history, client, token }: IProps){
     const loggedIn = (
         <Switch>
             <Route path="/" component={ KanbanList } exact/>
-            <Route path="/kanbans" component={ KanbanList }/>
+            <Route path="/kanbans" component={ KanbanList } exact/>
+            <Route path="/kanbans/new" component={ KanbanCreationForm } exact/>
         </Switch>
     );
     const loggedOut = (
@@ -38,7 +39,6 @@ function Root({ store, history, client, token }: IProps){
     return (
         <ApolloProvider client={ client }>
             <Provider store={ store }>
-                <Navbar/>
                 <ConnectedRouter history={ history }>
                     { token ? loggedIn : loggedOut }
                 </ConnectedRouter>

@@ -35,7 +35,7 @@ function Component({ username,
     return (
         <div>
             <div className="black-bg" />
-            <div className="landing-container">
+            <div className="landing-container over-black-bg">
                 <div className="bg-dark p1em text-white rounded-top">
                     Login
                 </div>

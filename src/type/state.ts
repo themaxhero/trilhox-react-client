@@ -1,3 +1,4 @@
+import { RouterState } from "connected-react-router";
 import { book, bookDraft } from "./book";
 import { card, cardDraft } from './card';
 import { comment, commentDraft } from './comment';
@@ -27,6 +28,11 @@ interface IComments {
 interface IKanbans {
     kanbans: OrderedObject<kanban>;
     drafts: kanbanDraft[];
+}
+
+interface IKanbanList{
+    deleteMode: boolean;
+    deletingKanban?: kanban;
 }
 
 interface IKanbanCreationForm {
@@ -72,6 +78,7 @@ interface IMainState{
     card: ICards;
     comment: IComments;
     kanban: IKanbans;
+    kanbanList: IKanbanList;
     kanbanCreationForm: IKanbanCreationForm;
     label: ILabels;
     landing: ILanding;
@@ -79,7 +86,7 @@ interface IMainState{
     member: IMembers;
     task: ITasks;
     user: IUsers;
-    router: any;
+    router: RouterState;
 }
 
 export type state = IMainState;
@@ -91,6 +98,8 @@ export type cardState = ICards;
 export type commentState = IComments;
 
 export type kanbanState = IKanbans;
+
+export type kanbanListState = IKanbanList;
 
 export type kanbanCreationFormState = IKanbanCreationForm;
 

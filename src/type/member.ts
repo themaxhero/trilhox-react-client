@@ -13,4 +13,16 @@ interface IMember {
     permission: Permission;
 }
 
+interface IMemberDraft {
+    user: uuid;
+    kanban: uuid;
+    permission: Permission;
+}
+
 export type member = IMember;
+
+export function changePermission(member: member, permission: Permission): member {
+    return { ...member,  permission };
+}
+
+export default { changePermission };

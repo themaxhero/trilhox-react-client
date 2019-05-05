@@ -59,10 +59,6 @@ export function update<T>(list: OrderedObject<T>,
                           callback: updateCallback<T>): OrderedObject<T>{
     const obj: Option<T> = get(list, id);
     const transformedObj: Option<T> = callback(obj);
-    const transformListCallback = 
-        (oObj: OrderedObject<T>, value: T): OrderedObject<T> => {
-            return insert<T>(oObj, id, value);
-        }
     return updateIfSome(list, id, transformedObj);
 }
 
@@ -78,3 +74,5 @@ export function map<T, U>(list: OrderedObject<T>, callback: mapCallback<T, U>){
     allKeys.forEach(callback_)
     return from(newByKey, allKeys);
 }
+
+export default { empty, get, insert, remove, update, map };

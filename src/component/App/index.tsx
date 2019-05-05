@@ -2,10 +2,8 @@ import React from 'react';
 
 interface IProps {}
 
-function App({}: IProps){
-  return (<div>
-            <div>Trilho X</div>
-          </div>)
+function Component({}: IProps){
+  return (<div/>);
 }
 
-export default App;
+export default Component;

@@ -7,6 +7,7 @@ import { member } from "./member";
 import { task, taskDraft } from "./task";
 import { user } from "./user";
 import { OrderedObject } from './OrderedObject';
+import { name, url } from "./generic";
 
 interface IBooks {
     books: OrderedObject<book>;
@@ -28,9 +29,29 @@ interface IKanbans {
     drafts: kanbanDraft[];
 }
 
+interface IKanbanCreationForm {
+    name?: name;
+    background?: url;
+}
+
 interface ILabels {
     labels: OrderedObject<label>;
     drafts: labelDraft[];
+}
+
+interface ILanding {
+    login?: string;
+    password?: string;
+    loggedIn?: boolean;
+    token?: string;
+    error?: string;
+}
+
+interface IRegister {
+    username?: string;
+    email?: string;
+    password?: string;
+    error?: string;    
 }
 
 interface IMembers {
@@ -51,7 +72,10 @@ interface IMainState{
     card: ICards;
     comment: IComments;
     kanban: IKanbans;
+    kanbanCreationForm: IKanbanCreationForm;
     label: ILabels;
+    landing: ILanding;
+    register: IRegister;
     member: IMembers;
     task: ITasks;
     user: IUsers;
@@ -68,7 +92,13 @@ export type commentState = IComments;
 
 export type kanbanState = IKanbans;
 
+export type kanbanCreationFormState = IKanbanCreationForm;
+
 export type labelState = ILabels;
+
+export type landingState = ILanding;
+
+export type registerState = IRegister;
 
 export type memberState = IMembers;
 

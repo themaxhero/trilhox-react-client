@@ -17,16 +17,16 @@ import { state } from "../../type/state";
 import { connect } from "react-redux";
 
 const CREATE_KANBAN = gql` 
-mutation {
-    createKanban(input: $input){
-        id,
-        name,
-        background,
-        author {
-            id
+    mutation createKanban($input: CreateKanbanInput){
+        createKanban(input: $input){
+            id,
+            name,
+            background,
+            author {
+                id
+            }
         }
     }
-}
 `
 
 interface IProps{
@@ -46,7 +46,7 @@ function Component({ name,
                      onCancel,
                    }: IProps){
     // FIXME: ASSIGN THE PROPER DISPATCHS
-    const onSubmit = (createKanban: Function) => {
+    const onSubmit = (createKanban: (input: any) => void, data: any) => {
         return (e: any) => {
             if (name){
                 const variables = { 
@@ -54,51 +54,57 @@ function Component({ name,
                 };
                 e.preventDefault();
                 createKanban( { variables } );
-                onResetForm();
+                //console.log(data);
+                //onCreatedKanban();
             }
         }
     };
     return (
         <Mutation mutation={ CREATE_KANBAN }>
-            {(createKanban: Function, { data }: any) => (
-                <div className="kanban-form-container">
-                    <div className="black-bg"/>
-                    <div className="kanban-form">
-                        <div className="bg-dark text-white rounded-top p1em">
-                            Create a Kanban
-                        </div>
-                        <div className="bg-light p1em rounded-bottom">
-                            <Form onSubmit={ onSubmit(createKanban) }>
-                                <FormControl
-                                    className="kd-form-control" 
-                                    placeholder="Kanban`s name"
-                                    value={ name ? name : "" }
-                                    onChange={ onChangeName }/>
-                                <FormControl
-                                    className="kd-form-control"
-                                    placeholder="Kanban's background url"
-                                    value={ background ? background : "" }
-                                    onChange={ onChangeBg }/>
-                                <div className="kd-btn-container">
-                                    <Button
-                                        className="kd-form-button"
-                                        variant="primary"
-                                        disabled={ !name || !background }
-                                        onClick={ onSubmit(createKanban) }>
-                                        Submit
-                                    </Button>
-                                    <Button
-                                        className="kd-form-button"
-                                        variant="danger"
-                                        onClick={ onCancel }>
-                                        Cancel
-                                    </Button>
-                                </div>
-                            </Form>
+            {(createKanban: (input: any) => void, data: any) => {
+                console.log(data);
+                console.log(createKanban);
+                return (
+                    <div className="kanban-form-container">
+                        <div className="black-bg"/>
+                        <div className="kanban-form">
+                            <div className="bg-dark text-white rounded-top p1em">
+                                Create a Kanban
+                            </div>
+                            <div className="bg-light p1em rounded-bottom">
+                                <Form onSubmit={ onSubmit(createKanban, data) }>
+                                    <FormControl
+                                        className="kd-form-control" 
+                                        placeholder="Kanban`s name"
+                                        value={ name ? name : "" }
+                                        onChange={ onChangeName }/>
+                                    <FormControl
+                                        className="kd-form-control"
+                                        placeholder="Kanban's background url"
+                                        value={ background ? background : "" }
+                                        onChange={ onChangeBg }/>
+                                    <div className="kd-btn-container">
+                                        <Button
+                                            className="kd-form-button"
+                                            variant="primary"
+                                            type="submit"
+                                            disabled={ !name || !background }>
+                                            Submit
+                                        </Button>
+                                        <Button
+                                            className="kd-form-button"
+                                            variant="danger"
+                                            onClick={ onCancel }>
+                                            Cancel
+                                        </Button>
+                                    </div>
+                                </Form>
+                            </div>
                         </div>
                     </div>
-                </div>
-            )}
+                )
+            }
+        }
         </Mutation>
     );
 }

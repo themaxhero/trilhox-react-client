@@ -1,0 +1,13 @@
+.kanban-thumb{
+    cursor: pointer;
+}
+
+.kanban-thumb-title{
+    position: relative;
+    top: -25%;
+    color: white;
+    text-align: center;
+    font-size: 24px;
+    text-shadow: 1px 1px #222;
+    font-weight: bold;
+}
